@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Création de fiche produit</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- include summernote css/js-->
+    <link href="summernote.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="bootstrap-slider.css" rel="stylesheet">
+
+    <style>
+
+    body {
+      font-family: Helvetica, sans-serif;
+    }
+    .container {
+      margin: 20px auto;
+      width:80%;
+    }
+    .img-thumb {
+      width: 150px;
+      margin-top: 15px;
+    }
+    #input-autre {
+      margin-top: 10px;
+    }
+    .slider-selection {
+    	background: #84C4E5;
+    }
+    .slider-track-high {
+    	background: #dedede;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="input-produit" class="col-sm-2 control-label">Titre du produit</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="input-produit" placeholder="Titre du produit">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-codebarre" class="col-sm-2 control-label">Code barre du produit</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="input-codebarre" placeholder="Code Barre">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-description" class="col-sm-2 control-label">Description du produit</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="input-description" rows="6"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-prix" class="col-sm-2 control-label">Prix</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" data-slider-min="5" data-slider-max="1500" data-slider-step="5" id="input-prix" placeholder="Prix en euros">&nbsp;&nbsp; <span></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-date" class="col-sm-2 control-label">Disponibilité</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="input-date" placeholder="JJ/MM/AAAA">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-heure" class="col-sm-2 control-label">Heure de disponibilité</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="input-heure" placeholder="HH:MM">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-img" class="col-sm-2 control-label">Image</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="input-img" placeholder="Image (depuis Amazon S3)">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-qtmin" class="col-sm-2 control-label">Quantité minimum</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="input-qtmin" placeholder="Quantité minimum">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-qtmax" class="col-sm-2 control-label">Quantité maximum</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="input-qtmax" placeholder="Quantité maximum">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-color" class="col-sm-2 control-label">Couleur</label>
+          <div class="col-sm-2">
+            <div class="input-group">
+              <span class="input-group-addon">#</span>
+              <input type="text" class="form-control" id="input-color" placeholder="Format Hexadecimal" value="ffffff">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2 control-label">
+            <label for="input-motscles" class="control-label">Mots clés</label>
+            <p class="compteur">Aucun mot clés</p>
+          </div>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="input-motscles" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-type" class="col-sm-2 control-label">Type de vente</label>
+          <div class="col-sm-5">
+            <select class="form-control" id="input-type">
+              <option>Neuf</option>
+              <option>Occasion</option>
+              <option>Dématérialisé</option>
+              <option value="autre">Autre</option>
+            </select>
+            <input type="text" class="form-control" id="input-autre" placeholder="Autre ...">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" id="creer" class="btn btn-default">Créer cette fiche produit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="summernote.js"></script>
+    <script src="bootstrap-slider.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/colorpicker.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script src="jquery.mask.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js" charset="utf-8"></script>
+    <script src="one.js" charset="utf-8"></script>
+
+  </body>
+</html>

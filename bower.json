@@ -1,0 +1,22 @@
+{
+  "name": "ExoBower",
+  "authors": [
+    "Nikolas Ethore"
+  ],
+  "description": "Exercice test bower",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "datepicker": "*",
+    "moment": "^2.15.2"
+  }
+}
